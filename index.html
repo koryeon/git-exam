@@ -9,7 +9,7 @@
     <!-- Google Fonts: Montserrat (영문) & Noto Sans KR (국문) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons for Social Media -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -20,10 +20,16 @@
                     colors: {
                         charcoal: {
                             light: '#2D3748',
-                            DEFAULT: '#1A202C',
-                            dark: '#11141A',
+                            DEFAULT: '#161B25',
+                            dark: '#0A0D14',
+                            deep: '#05070A'
                         },
-                        softwhite: '#F7FAFC',
+                        gold: {
+                            light: '#F3E5AB',
+                            DEFAULT: '#D4AF37',
+                            dark: '#AA7C11'
+                        },
+                        softwhite: '#F8FAFC',
                         pointblue: '#1E3A8A',
                         silver: '#E2E8F0'
                     },
@@ -43,152 +49,200 @@
         /* Custom Fade-in Animation on Scroll */
         .fade-in-element {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(25px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .fade-in-element.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Hero text layout adjustment */
-        .text-stroke {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-            color: transparent;
+        /* Ambient glowing effects */
+        .glow-overlay {
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0D14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
         }
     </style>
 </head>
-<body class="bg-charcoal-dark text-softwhite font-sans antialiased overflow-x-hidden selection:bg-pointblue selection:text-white">
+<body class="bg-charcoal-deep text-softwhite font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-charcoal-deep">
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-charcoal-dark/85 backdrop-blur-md border-b border-white/5 transition-all duration-300" id="main-header">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-xl font-extrabold tracking-widest text-white hover:text-silver transition-colors">
-                CHIC <span class="text-xs font-light tracking-normal text-gray-400 ml-1">Atelier</span>
+    <header class="fixed top-0 left-0 w-full z-50 bg-charcoal-deep/80 backdrop-blur-xl border-b border-white/5 transition-all duration-500" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="text-lg sm:text-xl font-extrabold tracking-[0.25em] text-white hover:text-gold transition-colors duration-300">
+                CHIC <span class="text-[10px] font-light tracking-[0.1em] text-gray-400 ml-1 block sm:inline">ATELIER</span>
             </a>
             
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-10 text-xs font-semibold tracking-widest uppercase">
-                <a href="#hero" class="text-white hover:text-gray-400 transition-colors">Home</a>
-                <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
-                <a href="#signature" class="text-gray-400 hover:text-white transition-colors">Signature</a>
-                <a href="#location" class="text-gray-400 hover:text-white transition-colors">Visit</a>
+            <nav class="hidden md:flex space-x-8 lg:space-x-12 text-[11px] font-semibold tracking-[0.2em] uppercase">
+                <a href="#hero" class="text-white hover:text-gold transition-all duration-300 relative group py-1">
+                    Home
+                    <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#about" class="text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                    About
+                    <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#gallery" class="text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                    Menu Collection
+                    <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#customizer" class="text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                    Cake Lab
+                    <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#location" class="text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                    Visit
+                    <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
             </nav>
 
             <!-- Instagram Button -->
             <div class="hidden md:block">
-                <a href="https://instagram.com" target="_blank" class="text-sm px-4 py-2 border border-white/20 hover:border-white rounded-full transition-all duration-300 flex items-center gap-2">
-                    <i class="fab fa-instagram"></i>
-                    <span class="text-xs font-medium uppercase tracking-wider">Instagram</span>
+                <a href="https://instagram.com" target="_blank" class="text-[10px] px-5 py-2.5 border border-white/10 hover:border-gold hover:text-gold rounded-full transition-all duration-500 flex items-center gap-2 tracking-widest font-bold uppercase">
+                    <i class="fab fa-instagram text-xs"></i>
+                    <span>Instagram</span>
                 </a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn" aria-label="Toggle Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            <!-- Mobile Menu Toggle Button -->
+            <button class="md:hidden text-white hover:text-gold p-2 focus:outline-none transition-colors" id="mobile-menu-btn" aria-label="메뉴 열기">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="hamburger-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-16 6h16"></path>
                 </svg>
             </button>
         </div>
 
-        <!-- Mobile Dropdown Nav -->
-        <div class="hidden md:hidden bg-charcoal border-b border-white/5 px-6 py-4 space-y-3" id="mobile-menu">
-            <a href="#hero" class="block text-sm font-semibold tracking-wider text-white py-2">Home</a>
-            <a href="#about" class="block text-sm font-semibold tracking-wider text-gray-300 py-2">About</a>
-            <a href="#signature" class="block text-sm font-semibold tracking-wider text-gray-300 py-2">Signature</a>
-            <a href="#location" class="block text-sm font-semibold tracking-wider text-gray-300 py-2">Visit</a>
-            <div class="pt-4 border-t border-white/10">
-                <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-2 text-xs text-gray-300">
-                    <i class="fab fa-instagram"></i> INSTAGRAM
-                </a>
+        <!-- Responsive Mobile Fullscreen Drawer Navigation -->
+        <div class="fixed inset-0 z-40 bg-charcoal-deep/98 backdrop-blur-2xl transition-all duration-500 transform translate-x-full md:hidden flex flex-col justify-between p-8" id="mobile-menu-drawer">
+            <div class="flex items-center justify-between mt-4">
+                <span class="text-lg font-extrabold tracking-widest text-gold">CHIC ATELIER</span>
+                <button class="text-white hover:text-gold p-2" id="mobile-menu-close" aria-label="메뉴 닫기">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="flex flex-col space-y-6 text-center text-xl font-light tracking-[0.25em] uppercase my-auto">
+                <a href="#hero" class="mobile-nav-link text-white hover:text-gold transition-colors py-2">Home</a>
+                <a href="#about" class="mobile-nav-link text-gray-400 hover:text-gold transition-colors py-2">About</a>
+                <a href="#gallery" class="mobile-nav-link text-gray-400 hover:text-gold transition-colors py-2">Collection</a>
+                <a href="#customizer" class="mobile-nav-link text-gray-400 hover:text-gold transition-colors py-2">Cake Lab</a>
+                <a href="#location" class="mobile-nav-link text-gray-400 hover:text-gold transition-colors py-2">Visit</a>
+            </nav>
+
+            <div class="border-t border-white/10 pt-6 text-center space-y-4">
+                <p class="text-[10px] text-gray-500 tracking-widest">CONNECT WITH US</p>
+                <div class="flex justify-center gap-6 text-lg text-gray-400">
+                    <a href="https://instagram.com" target="_blank" class="hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="mailto:hello@chicatelier.com" class="hover:text-gold transition-colors"><i class="far fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- 1. Hero Section: 시선 집중 -->
-    <section id="hero" class="relative h-screen flex items-center justify-center bg-charcoal-dark overflow-hidden">
+    <section id="hero" class="relative min-h-screen flex items-center justify-center bg-charcoal-deep overflow-hidden pt-20">
         <!-- Background Overlay / Media placeholder -->
         <div class="absolute inset-0 z-0">
             <!-- 시크한 분위기의 현대적인 디저트 클로즈업 사진을 묘사하는 SVG 패턴 배경 -->
-            <svg class="w-full h-full object-cover opacity-35" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <svg class="w-full h-full object-cover opacity-25" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <defs>
-                    <linearGradient id="hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#11141A" />
-                        <stop offset="50%" stop-color="#1A202C" />
-                        <stop offset="100%" stop-color="#0A0C10" />
-                    </linearGradient>
+                    <radialGradient id="hero-grad" cx="50%" cy="50%" r="70%">
+                        <stop offset="0%" stop-color="#161B25" />
+                        <stop offset="60%" stop-color="#0A0D14" />
+                        <stop offset="100%" stop-color="#05070A" />
+                    </radialGradient>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#hero-grad)" />
-                <!-- 추상적인 디저트 모양을 형상화한 실버/화이트 원형 디자인 요소 -->
-                <circle cx="50%" cy="50%" r="20%" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="2" />
-                <circle cx="50%" cy="50%" r="35%" fill="none" stroke="rgba(255, 255, 255, 0.02)" stroke-width="1" />
-                <path d="M 0,200 Q 300,150 600,300 T 1200,100 T 1800,400" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5" />
+                <!-- 기하학적 아키텍처 드로잉 라인 -->
+                <circle cx="50%" cy="50%" r="22%" fill="none" stroke="rgba(212, 175, 55, 0.08)" stroke-width="1" />
+                <circle cx="50%" cy="50%" r="35%" fill="none" stroke="rgba(255, 255, 255, 0.02)" stroke-width="1.5" />
+                <path d="M-100,200 L1900,600 M-100,500 L1900,100" stroke="rgba(255,255,255,0.015)" stroke-width="1" />
+                <path d="M 100,100 Q 500,400 900,100 T 1700,500" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="1.2" />
             </svg>
-            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-dark via-transparent to-charcoal-dark/50"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-transparent to-charcoal-deep/60"></div>
+            <div class="absolute inset-0 glow-overlay"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+        <div class="relative z-10 text-center px-4 sm:px-6 md:px-8 max-w-4xl mx-auto my-auto py-12">
             <!-- Category Tag -->
-            <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mb-6 font-semibold animate-pulse">Atelier de Dessert</p>
+            <p class="text-[9px] sm:text-xs uppercase tracking-[0.5em] text-gold mb-6 font-semibold animate-pulse">Atelier de Dessert Premium</p>
             
             <!-- Catchphrase -->
-            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight">
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 sm:mb-8 leading-[1.15] sm:leading-tight">
                 디저트, 일상의 가장<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">완벽한 한 조각</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gold-light to-gold">완벽한 한 조각</span>
             </h1>
             
             <!-- Subtitle Description -->
-            <p class="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                엄선된 최고급 원료와 갤러리를 닮은 미니멀한 공간.<br>
+            <p class="text-xs sm:text-sm md:text-base text-gray-400 max-w-xl sm:max-w-2xl mx-auto mb-10 sm:mb-12 font-light leading-relaxed px-2">
+                엄선된 최고급 원료와 갤러리를 닮은 미니멀한 공간.<br class="hidden sm:block">
                 시크한 감각으로 빚어낸 오직 당신만을 위한 한정판 디저트 아틀리에.
             </p>
 
             <!-- CTA Call to Action Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#signature" class="w-full sm:w-auto px-8 py-4 bg-white text-charcoal-dark font-bold text-xs uppercase tracking-widest hover:bg-silver hover:scale-105 transition-all duration-300 shadow-lg">
-                    Discover Signature
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
+                <a href="#gallery" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gold text-charcoal-deep font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-xl hover:shadow-gold/10 transform hover:-translate-y-1">
+                    Discover Collection
                 </a>
-                <a href="#location" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all duration-300">
-                    Find Store
+                <a href="#customizer" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 hover:border-gold text-white hover:text-gold font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 transform hover:-translate-y-1">
+                    Try Cake Lab
                 </a>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-            <span class="text-[9px] uppercase tracking-[0.3em] text-gray-500">Scroll Down</span>
-            <div class="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent relative overflow-hidden">
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+            <span class="text-[8px] uppercase tracking-[0.3em] text-gray-500">Scroll Down</span>
+            <div class="w-[1px] h-10 sm:h-14 bg-gradient-to-b from-gold to-transparent relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-bounce"></div>
             </div>
         </div>
     </section>
 
     <!-- 2. About Section: 공간 제안 -->
-    <section id="about" class="py-24 md:py-32 bg-charcoal relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="about" class="py-20 sm:py-28 md:py-36 bg-charcoal relative overflow-hidden border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
                 <!-- Left text side -->
-                <div class="lg:col-span-5 space-y-8 fade-in-element">
+                <div class="lg:col-span-5 space-y-6 sm:space-y-8 fade-in-element">
                     <div class="space-y-3">
-                        <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">01 / Space Design</span>
-                        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-                            갤러리를 닮은<br>미니멀한 휴식
+                        <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">01 / Architectural Space</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+                            갤러리를 닮은<br>미니멀한 사색
                         </h2>
                     </div>
                     
-                    <p class="text-sm md:text-base text-gray-400 leading-relaxed font-light">
+                    <p class="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed font-light">
                         바쁜 도심의 소음에서 벗어나 온전히 달콤함에 몰입할 수 있도록 설계되었습니다. 
-                        불필요한 인테리어적 요소를 최대한 배제하고, 무채색의 톤앤매너와 절제된 조명을 통해 디저트 한 조각이 예술 작품처럼 빛을 발하도록 합니다. 
+                        불필요한 장식적 요소를 모두 걷어내고, 무채색의 조명 설계와 절제된 여백을 통해 디저트 한 조각이 하얀 캔버스 위의 예술 작품처럼 빛을 발하도록 돕습니다. 
                     </p>
 
-                    <blockquote class="border-l-2 border-white/20 pl-4 py-1 text-sm text-gray-400 italic">
-                        "시크한 공간 속에서 마주하는 온전하고 고요한 한 조각의 휴식"
+                    <blockquote class="border-l-2 border-gold/40 pl-4 py-1 text-xs sm:text-sm text-gray-400 italic font-light">
+                        "고요한 빛과 절제된 실루엣 속에서 마주하는 나만을 위한 한 조각의 사치"
                     </blockquote>
 
-                    <div>
-                        <a href="#location" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white group">
-                            <span>공간 투어 & 위치 안내</span>
+                    <div class="pt-2">
+                        <a href="#location" class="inline-flex items-center gap-3 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-gold hover:text-white group transition-colors duration-300">
+                            <span>공간 투어 & 오시는 길</span>
                             <span class="transform group-hover:translate-x-2 transition-transform duration-300">→</span>
                         </a>
                     </div>
@@ -196,25 +250,36 @@
 
                 <!-- Right visual side -->
                 <div class="lg:col-span-7 fade-in-element">
-                    <div class="relative group overflow-hidden bg-charcoal-dark border border-white/5 aspect-[4/3] flex items-center justify-center">
+                    <div class="relative group overflow-hidden bg-charcoal-deep border border-white/5 aspect-[4/3] flex items-center justify-center rounded-sm">
                         <!-- 미니멀 인테리어 모던 갤러리풍 매장 공간 묘사 일러스트 (SVG) -->
-                        <svg class="w-full h-full p-8 opacity-90 transition-transform duration-700 group-hover:scale-105" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="800" height="600" fill="#11141A"/>
+                        <svg class="w-full h-full p-4 sm:p-8 opacity-90 transition-transform duration-1000 group-hover:scale-105" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="800" height="600" fill="#0A0D14"/>
                             <!-- 벽면과 원근감 있는 가구 라인들 -->
-                            <line x1="100" y1="450" x2="700" y2="450" stroke="#2D3748" stroke-width="2"/>
-                            <line x1="100" y1="150" x2="700" y2="150" stroke="#2D3748" stroke-width="1" stroke-dasharray="4 4"/>
+                            <line x1="100" y1="480" x2="700" y2="480" stroke="#1F2937" stroke-width="2"/>
+                            <line x1="100" y1="120" x2="700" y2="120" stroke="#1F2937" stroke-width="1" stroke-dasharray="4 4"/>
+                            <line x1="250" y1="120" x2="250" y2="480" stroke="#161B25" stroke-width="1"/>
+                            <line x1="550" y1="120" x2="550" y2="480" stroke="#161B25" stroke-width="1"/>
+                            
                             <!-- 미니멀 디자인의 테이블과 오브제 -->
-                            <rect x="300" y="380" width="200" height="70" fill="#1A202C" stroke="#4A5568" stroke-width="1.5"/>
-                            <circle cx="400" cy="330" r="15" fill="#E2E8F0" opacity="0.8"/>
-                            <path d="M400 330 L400 380" stroke="#E2E8F0" stroke-width="1"/>
+                            <rect x="280" y="380" width="240" height="100" fill="#161B25" stroke="#374151" stroke-width="1.5"/>
+                            <circle cx="400" cy="310" r="18" fill="#D4AF37" opacity="0.6"/>
+                            <path d="M400 310 L400 380" stroke="#D4AF37" stroke-width="1.5"/>
+                            
                             <!-- 은은한 조명 연출 -->
-                            <polygon points="400,150 350,300 450,300" fill="rgba(255,255,255,0.03)"/>
-                            <circle cx="400" cy="150" r="4" fill="#A0AEC0"/>
+                            <polygon points="400,120 310,380 490,380" fill="url(#light-glow)" opacity="0.15"/>
+                            <circle cx="400" cy="120" r="5" fill="#9CA3AF"/>
+
+                            <defs>
+                                <linearGradient id="light-glow" x1="400" y1="120" x2="400" y2="380">
+                                    <stop offset="0%" stop-color="#D4AF37" />
+                                    <stop offset="100%" stop-color="#0A0D14" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
                         </svg>
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-dark via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-6 left-6 text-left">
-                            <p class="text-xs font-bold tracking-widest text-white">CHIC ARCHIVE</p>
-                            <p class="text-[10px] text-gray-500">Minimalist & Architectural Space</p>
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-left">
+                            <p class="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-white">CHIC ARCHIVE</p>
+                            <p class="text-[8px] sm:text-[10px] text-gray-500 tracking-wider">Minimalist Concept Lounge, Seongsu</p>
                         </div>
                     </div>
                 </div>
@@ -223,184 +288,316 @@
         </div>
     </section>
 
-    <!-- 3. Strengths Section: 강점 카드 (호기심 자극) -->
-    <section id="signature" class="py-24 md:py-32 bg-charcoal-dark border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            
-            <div class="text-center max-w-2xl mx-auto mb-20 space-y-4 fade-in-element">
-                <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">02 / Signature Focus</span>
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">우리를 특별하게 만드는 가치</h2>
-                <div class="w-12 h-[1px] bg-white/20 mx-auto mt-6"></div>
+    <!-- 3. Dessert Showcase Section (Interactive Filtering) -->
+    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-charcoal-deep relative overflow-hidden border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">02 / Les Collections</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">시즌 한정 디저트 컬렉션</h2>
+                <p class="text-xs sm:text-sm text-gray-400 font-light max-w-md mx-auto">매달 새롭게 큐레이션되는 디저트 미학. 감각적인 풍미를 눈과 입으로 모두 경험하세요.</p>
+                <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
             </div>
 
-            <!-- Strength Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Filter Tabs -->
+            <div class="flex justify-center gap-2 sm:gap-4 mb-10 text-[10px] sm:text-xs tracking-widest uppercase font-semibold overflow-x-auto whitespace-nowrap pb-2 fade-in-element">
+                <button onclick="filterMenu('all')" class="menu-tab-btn active px-4 py-2 border border-gold text-gold rounded-full transition-all duration-300" id="tab-all">All</button>
+                <button onclick="filterMenu('signature')" class="menu-tab-btn px-4 py-2 border border-white/10 text-gray-400 hover:text-white rounded-full transition-all duration-300" id="tab-signature">Signature</button>
+                <button onclick="filterMenu('seasonal')" class="menu-tab-btn px-4 py-2 border border-white/10 text-gray-400 hover:text-white rounded-full transition-all duration-300" id="tab-seasonal">Seasonal Edition</button>
+            </div>
+
+            <!-- Dessert Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="menu-grid">
                 
-                <!-- Card 1: 비주얼 시그니처 케이크 -->
-                <div class="bg-charcoal border border-white/5 hover:border-white/20 p-8 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-2 fade-in-element">
-                    <div class="space-y-6">
-                        <div class="h-40 bg-charcoal-dark flex items-center justify-center overflow-hidden relative border border-white/5">
-                            <!-- 시그니처 케이크 비주얼 SVG 플레이스홀더 -->
-                            <svg class="w-1/2 h-1/2 opacity-75 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="25" y="45" width="50" height="25" rx="2" fill="#E2E8F0" stroke="#718096" stroke-width="1.5"/>
-                                <rect x="35" y="25" width="30" height="20" rx="2" fill="#1E3A8A" stroke="#718096" stroke-width="1.5"/>
-                                <circle cx="50" cy="15" r="4" fill="#ED64A6"/>
-                                <line x1="50" y1="15" x2="50" y2="25" stroke="#ED64A6" stroke-width="1"/>
+                <!-- Dessert Item 1 -->
+                <div class="menu-item signature bg-charcoal border border-white/5 hover:border-gold/30 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm fade-in-element">
+                    <div class="space-y-4">
+                        <div class="aspect-square bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-white/5 rounded-sm">
+                            <!-- Geometric Blanc SVG -->
+                            <svg class="w-2/3 h-2/3 opacity-85 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="25" y="25" width="50" height="50" rx="4" fill="#F8FAFC" stroke="#D4AF37" stroke-width="1"/>
+                                <line x1="25" y1="25" x2="75" y2="75" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="2 2"/>
+                                <circle cx="50" cy="50" r="10" fill="#0A0D14" stroke="#D4AF37" stroke-width="1"/>
+                                <circle cx="50" cy="50" r="4" fill="#D4AF37"/>
                             </svg>
+                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded">Signature</span>
                         </div>
-                        <span class="text-xs text-gray-500 font-bold tracking-widest block">POINT 01</span>
-                        <h3 class="text-xl font-bold text-white group-hover:text-pointblue transition-colors">비주얼 시그니처 케이크</h3>
-                        <p class="text-sm text-gray-400 font-light leading-relaxed">
-                            SNS 피드를 사로잡는 기하학적이고 시크한 케이크 디자인. 단순한 디저트를 넘어 하나의 미학적 조각품을 접시에 담아냅니다.
+                        <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-gold transition-colors duration-300">쥬메트릭 블랑 (Geometric Blanc)</h3>
+                        <p class="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
+                            기하학적인 구조미가 돋보이는 화이트 초콜릿 무스 케이크. 상큼한 라즈베리 콩피와 은은한 얼그레이 크림의 조화.
                         </p>
                     </div>
-                    <div class="pt-8 border-t border-white/5 mt-8 flex justify-between items-center text-xs text-gray-500">
-                        <span>#인스타그래머블 #조형미</span>
-                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View More →</span>
+                    <div class="pt-4 border-t border-white/5 mt-6 flex justify-between items-center text-xs text-gray-500 font-medium">
+                        <span class="text-gold font-semibold">12,000 KRW</span>
+                        <button onclick="openDetailModal('쥬메트릭 블랑', '기하학적인 큐브 실루엣 속에 마다가스카르산 바닐라 빈 무스와 수제 라즈베리 젤리가 감춰진 대표 시그니처.', '바닐라 무스, 얼그레이 크림, 라즈베리 콩피, 사브레', 'Single Origin Filter Coffee')" class="text-white hover:text-gold transition-colors text-[10px] tracking-wider uppercase font-bold">Details →</button>
                     </div>
                 </div>
 
-                <!-- Card 2: 미니멀 인테리어 -->
-                <div class="bg-charcoal border border-white/5 hover:border-white/20 p-8 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-2 fade-in-element">
-                    <div class="space-y-6">
-                        <div class="h-40 bg-charcoal-dark flex items-center justify-center overflow-hidden relative border border-white/5">
-                            <!-- 미니멀 인테리어 SVG 플레이스홀더 -->
-                            <svg class="w-1/2 h-1/2 opacity-75 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="10" y1="80" x2="90" y2="80" stroke="#718096" stroke-width="1.5"/>
-                                <rect x="30" y="50" width="40" height="30" fill="none" stroke="#718096" stroke-width="1.5"/>
-                                <circle cx="50" cy="30" r="10" fill="none" stroke="#718096" stroke-width="1.5"/>
+                <!-- Dessert Item 2 -->
+                <div class="menu-item seasonal bg-charcoal border border-white/5 hover:border-gold/30 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm fade-in-element">
+                    <div class="space-y-4">
+                        <div class="aspect-square bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-white/5 rounded-sm">
+                            <!-- Noir Gold Sphère SVG -->
+                            <svg class="w-2/3 h-2/3 opacity-85 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="30" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                                <circle cx="40" cy="40" r="12" fill="url(#sphere-gold-grad)"/>
+                                <path d="M 50,20 A 30,30 0 0,0 80,50" stroke="#D4AF37" stroke-width="1.5"/>
+                                <defs>
+                                    <radialGradient id="sphere-gold-grad" cx="30%" cy="30%" r="70%">
+                                        <stop offset="0%" stop-color="#FFF" />
+                                        <stop offset="50%" stop-color="#D4AF37" />
+                                        <stop offset="100%" stop-color="#AA7C11" />
+                                    </radialGradient>
+                                </defs>
                             </svg>
+                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-white bg-white/10 px-2 py-0.5 rounded">Summer Only</span>
                         </div>
-                        <span class="text-xs text-gray-500 font-bold tracking-widest block">POINT 02</span>
-                        <h3 class="text-xl font-bold text-white group-hover:text-pointblue transition-colors">미니멀한 인테리어</h3>
-                        <p class="text-sm text-gray-400 font-light leading-relaxed">
-                            시끄러운 소음이 차단된 무채색의 갤러리 감성. 복잡한 생각을 비우고 오롯이 미식과 감각적인 시간에 집중할 수 있는 시크한 휴식 공간을 선사합니다.
+                        <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-gold transition-colors duration-300">누아르 골드 스페어 (Noir Gold Sphère)</h3>
+                        <p class="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
+                            우주적 구체를 표현한 다크 초콜릿 도스. 순금박 디테일과 진한 모카 카라멜 크런치 필링이 폭발적인 깊이를 제공합니다.
                         </p>
                     </div>
-                    <div class="pt-8 border-t border-white/5 mt-8 flex justify-between items-center text-xs text-gray-500">
-                        <span>#무채색감성 #조용한사색</span>
-                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View More →</span>
+                    <div class="pt-4 border-t border-white/5 mt-6 flex justify-between items-center text-xs text-gray-500 font-medium">
+                        <span class="text-gold font-semibold">14,000 KRW</span>
+                        <button onclick="openDetailModal('누아르 골드 스페어', '벨기에산 70% 다크 초콜릿 가나슈로 둘러싼 우주 구체 모양 케이크. 내부는 부드러운 수제 에스프레소 솔티드 카라멜 크런치.', '다크초콜릿 가나슈, 모카 익스트랙, 솔티드 카라멜 크런치', 'Espresso Macchiato')" class="text-white hover:text-gold transition-colors text-[10px] tracking-wider uppercase font-bold">Details →</button>
                     </div>
                 </div>
 
-                <!-- Card 3: 시즌별 한정 메뉴 -->
-                <div class="bg-charcoal border border-white/5 hover:border-white/20 p-8 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-2 fade-in-element">
-                    <div class="space-y-6">
-                        <div class="h-40 bg-charcoal-dark flex items-center justify-center overflow-hidden relative border border-white/5">
-                            <!-- 시즌별 한정 메뉴 SVG 플레이스홀더 -->
-                            <svg class="w-1/2 h-1/2 opacity-75 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="30" stroke="#718096" stroke-width="1.5" stroke-dasharray="6 6"/>
-                                <path d="M50 20 L50 35 M50 65 L50 80 M20 50 L35 50 M65 50 L80 50" stroke="#1E3A8A" stroke-width="1.5"/>
-                                <circle cx="50" cy="50" r="8" fill="#E2E8F0"/>
+                <!-- Dessert Item 3 -->
+                <div class="menu-item signature bg-charcoal border border-white/5 hover:border-gold/30 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm fade-in-element">
+                    <div class="space-y-4">
+                        <div class="aspect-square bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-white/5 rounded-sm">
+                            <!-- Minimalist Tart SVG -->
+                            <svg class="w-2/3 h-2/3 opacity-85 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 20,65 L 50,30 L 80,65 Z" fill="#D4AF37" opacity="0.3" stroke="#D4AF37" stroke-width="1"/>
+                                <path d="M 25,60 L 50,35 L 75,60 Z" fill="#161B25" stroke="#D4AF37" stroke-width="1"/>
+                                <line x1="20" y1="65" x2="80" y2="65" stroke="#D4AF37" stroke-width="2"/>
+                                <circle cx="50" cy="35" r="4" fill="#FF1493"/>
                             </svg>
+                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded">Signature</span>
                         </div>
-                        <span class="text-xs text-gray-500 font-bold tracking-widest block">POINT 03</span>
-                        <h3 class="text-xl font-bold text-white group-hover:text-pointblue transition-colors">시즌 한정 에디션</h3>
-                        <p class="text-sm text-gray-400 font-light leading-relaxed">
-                            가장 신선한 제철 과일과 트렌디한 감각이 결합된 라인업. 시즌이 지나면 다시 마주하기 힘든 특별한 희소 가치를 매달 제안해 드립니다.
+                        <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-gold transition-colors duration-300">트라이앵글 프레즈 (Triangle Fraise)</h3>
+                        <p class="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
+                            건축적 삼각형 구조로 디자인된 시크 타르트. 바삭한 아몬드 타르트 쉘 위에 최고급 국산 딸기를 겹겹이 배치한 미학.
                         </p>
                     </div>
-                    <div class="pt-8 border-t border-white/5 mt-8 flex justify-between items-center text-xs text-gray-500">
-                        <span>#트렌드세터 #계절과일</span>
-                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View More →</span>
+                    <div class="pt-4 border-t border-white/5 mt-6 flex justify-between items-center text-xs text-gray-500 font-medium">
+                        <span class="text-gold font-semibold">13,000 KRW</span>
+                        <button onclick="openDetailModal('트라이앵글 프레즈', '황금 비율의 피라미드 형태를 구현한 시크 타르트. 피스타치오 크림과 엄선한 성수 딸기가 풍성하게 어우러집니다.', '피스타치오 프렌치 파티시에 크림, 신선한 국산 설향딸기, 아몬드 타르트쉘', 'Matcha Latte')" class="text-white hover:text-gold transition-colors text-[10px] tracking-wider uppercase font-bold">Details →</button>
                     </div>
                 </div>
 
             </div>
-
         </div>
     </section>
 
-    <!-- 4. CTA & Location Section: 행동 유도 -->
-    <section id="location" class="py-24 md:py-32 bg-charcoal relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- 4. Interactive Cake Lab Section -->
+    <section id="customizer" class="py-20 sm:py-28 md:py-36 bg-charcoal relative overflow-hidden border-t border-white/5">
+        <div class="absolute inset-0 glow-overlay pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">03 / Lab & Custom</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">시크 오더 메이드 랩</h2>
+                <p class="text-xs sm:text-sm text-gray-400 font-light max-w-md mx-auto">나만의 취향과 예술성을 결합한 시그니처 미니멀 케이크를 미리 믹스해 보세요.</p>
+                <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
+            </div>
+
+            <!-- Customizer Box -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch fade-in-element">
+                
+                <!-- Custom Control Panel (Left) -->
+                <div class="lg:col-span-5 bg-charcoal border border-white/5 p-6 sm:p-8 flex flex-col justify-between space-y-6 sm:space-y-8 rounded-sm">
+                    <div class="space-y-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-white border-b border-white/10 pb-4">Configure Option</h3>
+                        
+                        <!-- Choice 1: Base Shape -->
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block">1. 베이스 형태 (Shape)</label>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <button onclick="updateCakeOption('shape', 'cube')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold rounded-sm transition-all text-center" id="opt-shape-cube">미니멀 큐브 (Cube)</button>
+                                <button onclick="updateCakeOption('shape', 'cylinder')" class="cake-opt-btn px-4 py-3 border border-white/5 text-gray-400 hover:text-white rounded-sm transition-all text-center" id="opt-shape-cylinder">라운드 실린더 (Cylinder)</button>
+                            </div>
+                        </div>
+
+                        <!-- Choice 2: Base Flavor/Color -->
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block">2. 플레이버 & 크림 (Cream Base)</label>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <button onclick="updateCakeOption('cream', 'blanc')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold rounded-sm transition-all text-center" id="opt-cream-blanc">플래티넘 화이트 (바닐라)</button>
+                                <button onclick="updateCakeOption('cream', 'matcha')" class="cake-opt-btn px-4 py-3 border border-white/5 text-gray-400 hover:text-white rounded-sm transition-all text-center" id="opt-cream-matcha">포레스트 그린 (말차)</button>
+                            </div>
+                        </div>
+
+                        <!-- Choice 3: Garnish -->
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block">3. 포인트 아트 가니쉬 (Artwork Garnish)</label>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <button onclick="updateCakeOption('garnish', 'gold')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold rounded-sm transition-all text-center" id="opt-garnish-gold">골드 리프 크랙 (Gold Foil)</button>
+                                <button onclick="updateCakeOption('garnish', 'berry')" class="cake-opt-btn px-4 py-3 border border-white/5 text-gray-400 hover:text-white rounded-sm transition-all text-center" id="opt-garnish-berry">루비 아방가르드 (Berry Art)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Estimate & CTA -->
+                    <div class="border-t border-white/10 pt-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-400 tracking-wider">Estimated Total</span>
+                            <span class="text-xl sm:text-2xl font-bold text-gold" id="cake-price">48,000 KRW</span>
+                        </div>
+                        <button onclick="reserveCustomCake()" class="w-full py-4 bg-gold text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold-light transition-all duration-300 rounded-sm">
+                            예약 및 상담 신청
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Showcase Canvas (Right) -->
+                <div class="lg:col-span-7 bg-charcoal-deep border border-white/5 p-6 sm:p-12 flex flex-col items-center justify-center min-h-[350px] sm:min-h-[450px] relative rounded-sm">
+                    <p class="absolute top-4 left-4 text-[10px] tracking-widest text-gray-500 uppercase font-mono">LIVE PREVIEW FRAME</p>
+                    
+                    <!-- Cake SVG Render Engine -->
+                    <div class="w-full max-w-[280px] sm:max-w-[340px] aspect-square flex items-center justify-center relative">
+                        <svg class="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" id="custom-cake-svg">
+                            <!-- Background Floor -->
+                            <ellipse cx="100" cy="150" rx="60" ry="15" fill="#161B25" stroke="#374151" stroke-width="0.7" opacity="0.4"/>
+                            
+                            <!-- MAIN CAKE BODY (Sleek Isometric Style) -->
+                            <!-- Dynamic Group changes depending on selections -->
+                            <g id="cake-body-render">
+                                <!-- Default is CUBE - Blanc -->
+                                <!-- Cube Top -->
+                                <polygon points="100,70 145,90 100,110 55,90" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1" id="cake-svg-top"/>
+                                <!-- Cube Left -->
+                                <polygon points="55,90 100,110 100,150 55,130" fill="#E2E8F0" stroke="#CCCCCC" stroke-width="1" id="cake-svg-left"/>
+                                <!-- Cube Right -->
+                                <polygon points="100,110 145,90 145,130 100,150" fill="#CBD5E1" stroke="#CCCCCC" stroke-width="1" id="cake-svg-right"/>
+                            </g>
+
+                            <!-- GARNISH OVERLAY -->
+                            <g id="cake-garnish-render">
+                                <!-- Default Gold Line Foil Garnish on Cube -->
+                                <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" id="garnish-svg-main"/>
+                                <circle cx="100" cy="85" r="3" fill="#D4AF37" id="garnish-svg-dots-1"/>
+                                <circle cx="120" cy="115" r="2" fill="#D4AF37" id="garnish-svg-dots-2"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="text-center mt-6">
+                        <h4 class="text-sm font-bold text-white tracking-widest uppercase" id="cake-visual-title">CUBE BLANC ATELIER</h4>
+                        <p class="text-[10px] text-gray-500 tracking-wider mt-1" id="cake-visual-desc">Symmetrical Architectural Cake (Gold Crack Edition)</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CTA & Location Section: 오시는 길 -->
+    <section id="location" class="py-20 sm:py-28 md:py-36 bg-charcoal relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
                 <!-- Map / Action area (Left) -->
                 <div class="lg:col-span-7 space-y-4 order-2 lg:order-1 fade-in-element">
-                    <div class="relative w-full aspect-video bg-charcoal-dark border border-white/5 rounded-none overflow-hidden group shadow-2xl">
+                    <div class="relative w-full aspect-video bg-charcoal-deep border border-white/5 rounded-sm overflow-hidden group shadow-2xl">
                         <!-- 가상의 지도 및 위치 안내용 SVG 인포그래픽 -->
                         <svg class="w-full h-full" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="600" height="400" fill="#11141A"/>
+                            <rect width="600" height="400" fill="#0A0D14"/>
                             <!-- 가상의 격자 및 도로 디자인 -->
-                            <line x1="0" y1="120" x2="600" y2="120" stroke="#2D3748" stroke-width="8"/>
-                            <line x1="0" y1="300" x2="600" y2="300" stroke="#2D3748" stroke-width="8"/>
-                            <line x1="180" y1="0" x2="180" y2="400" stroke="#2D3748" stroke-width="8"/>
-                            <line x1="450" y1="0" x2="450" y2="400" stroke="#2D3748" stroke-width="8"/>
+                            <line x1="0" y1="140" x2="600" y2="140" stroke="#1F2937" stroke-width="8"/>
+                            <line x1="0" y1="280" x2="600" y2="280" stroke="#1F2937" stroke-width="8"/>
+                            <line x1="200" y1="0" x2="200" y2="400" stroke="#1F2937" stroke-width="8"/>
+                            <line x1="450" y1="0" x2="450" y2="400" stroke="#1F2937" stroke-width="8"/>
                             
                             <!-- 서브 스트리트 얇은 선 -->
-                            <line x1="0" y1="210" x2="600" y2="210" stroke="#1A202C" stroke-width="2"/>
-                            <line x1="315" y1="0" x2="315" y2="400" stroke="#1A202C" stroke-width="2"/>
+                            <line x1="0" y1="210" x2="600" y2="210" stroke="#161B25" stroke-width="2"/>
+                            <line x1="320" y1="0" x2="320" y2="400" stroke="#161B25" stroke-width="2"/>
 
                             <!-- 강 또는 파크 영역 -->
-                            <rect x="0" y="0" width="100" height="400" fill="rgba(30, 58, 138, 0.05)"/>
-                            <text x="35" y="200" fill="#4A5568" font-size="11" font-family="Montserrat" letter-spacing="2" transform="rotate(-90 35 200)">SEOUL FOREST</text>
+                            <rect x="0" y="0" width="110" height="400" fill="rgba(212, 175, 55, 0.03)"/>
+                            <text x="35" y="200" fill="#4B5563" font-size="10" font-family="Montserrat" letter-spacing="3" transform="rotate(-90 35 200)">SEOUL FOREST</text>
 
                             <!-- 매장 위치 하이라이트 핀 -->
-                            <g transform="translate(315, 120)" class="cursor-pointer">
+                            <g transform="translate(320, 140)" class="cursor-pointer">
                                 <!-- 반사 효과 원형 파동 -->
-                                <circle cx="0" cy="0" r="16" fill="rgba(255, 255, 255, 0.1)">
+                                <circle cx="0" cy="0" r="16" fill="rgba(212, 175, 55, 0.15)">
                                     <animate attributeName="r" values="8;24;8" dur="3s" repeatCount="indefinite" />
                                 </circle>
-                                <circle cx="0" cy="0" r="6" fill="#1E3A8A"/>
-                                <circle cx="0" cy="0" r="3" fill="#E2E8F0"/>
+                                <circle cx="0" cy="0" r="7" fill="#D4AF37"/>
+                                <circle cx="0" cy="0" r="3" fill="#0A0D14"/>
                             </g>
                             
                             <!-- 텍스트 이정표 -->
-                            <text x="330" y="105" fill="#E2E8F0" font-size="12" font-family="Noto Sans KR" font-weight="bold">시크 아틀리에 매장</text>
-                            <text x="330" y="142" fill="#718096" font-size="10" font-family="Noto Sans KR">뚝섬역 5번출구 도보 3분</text>
+                            <text x="335" y="125" fill="#F8FAFC" font-size="12" font-family="Noto Sans KR" font-weight="bold">시크 아틀리에 (CHIC ATELIER)</text>
+                            <text x="335" y="158" fill="#9CA3AF" font-size="9" font-family="Noto Sans KR">뚝섬역 5번출구 도보 3분</text>
                         </svg>
                         
                         <!-- Map Control Hover Overlay -->
-                        <div class="absolute inset-0 bg-charcoal-dark/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button onclick="showCustomAlert()" class="px-6 py-3 bg-white text-charcoal-dark font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-silver transition-colors">
-                                Naver 지도에서 보기
+                        <div class="absolute inset-0 bg-charcoal-deep/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="showCustomAlert()" class="px-6 py-3.5 bg-white text-charcoal-deep font-bold text-[10px] tracking-widest uppercase hover:bg-gold transition-colors duration-300">
+                                Naver 지도 연결하기
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Text Right side (Right) -->
-                <div class="lg:col-span-5 space-y-8 order-1 lg:order-2 fade-in-element">
+                <div class="lg:col-span-5 space-y-6 sm:space-y-8 order-1 lg:order-2 fade-in-element">
                     <div class="space-y-3">
-                        <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">03 / Invitation</span>
-                        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-                            당신의 일상에<br>감각을 더하다
+                        <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">04 / Visit Us</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+                            당신의 고유한<br>미식을 위한 여정
                         </h2>
                     </div>
 
-                    <p class="text-sm md:text-base text-gray-400 leading-relaxed font-light">
-                        서울의 중심부, 가장 트렌디하고 감각적인 성수동 골목 안쪽에 비밀스레 자리 잡고 있습니다. 
-                        가벼운 기분 전환이 필요할 때, 나에게 완벽한 하루를 선물하고 싶을 때 편히 찾아주세요.
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
+                        서울에서 가장 트렌디하고 현대적인 미감이 살아있는 성수동 골목 한쪽에 조용하게 자리잡고 있습니다. 온전한 사색과 휴식이 필요할 때 문을 열고 방문해 주세요.
                     </p>
 
-                    <!-- Store Meta Infos -->
-                    <div class="space-y-4 pt-4 border-t border-white/10 text-xs text-gray-400">
-                        <div class="flex items-start gap-4">
-                            <span class="font-bold text-white uppercase w-16">ADDRESS</span>
-                            <span class="font-light">서울시 성동구 성수이로 11길 5 (CHIC 빌딩 1F)</span>
+                    <!-- Route Guide Tabs -->
+                    <div class="border-t border-white/10 pt-6 space-y-4">
+                        <!-- Tabs Header -->
+                        <div class="flex gap-4 border-b border-white/5 pb-2">
+                            <button onclick="switchRouteTab('subway')" class="route-tab active text-xs font-bold text-gold tracking-wider pb-1 relative" id="route-tab-subway">
+                                대중교통 이용시
+                                <span class="absolute bottom-0 left-0 w-full h-[1px] bg-gold" id="route-indicator-subway"></span>
+                            </button>
+                            <button onclick="switchRouteTab('car')" class="route-tab text-xs font-bold text-gray-400 tracking-wider pb-1 relative" id="route-tab-car">
+                                자차 이용시
+                                <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold" id="route-indicator-car"></span>
+                            </button>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <span class="font-bold text-white uppercase w-16">OPEN</span>
-                            <span class="font-light">Daily 11:30 - 21:30 (Last Order 21:00)</span>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <span class="font-bold text-white uppercase w-16">CONTACT</span>
-                            <span class="font-light">02. 1234. 5678 | hello@chicatelier.com</span>
+
+                        <!-- Tab Contents -->
+                        <div class="text-[11px] sm:text-xs text-gray-400 space-y-3" id="route-desc-container">
+                            <!-- Subway (Default) -->
+                            <div id="route-subway-content">
+                                <p class="leading-relaxed">
+                                    <strong class="text-white font-semibold">지하철 2호선 뚝섬역 5번 출구</strong>에서 나온 뒤, 우측 골목을 따라 약 250m 직진하세요. CHIC 그레이 빌딩 1층에 자리 잡고 있어 도보 약 3분 거리에 있습니다.
+                                </p>
+                            </div>
+                            <!-- Car (Hidden) -->
+                            <div id="route-car-content" class="hidden">
+                                <p class="leading-relaxed">
+                                    성수동 CHIC 빌딩 지하 전용 주차장을 이용해 주세요. 구매 고객에 한하여 <strong class="text-white font-semibold">무료 주차 2시간</strong>을 제공해 드립니다. 주차 공간이 협소할 경우 발렛 파킹 서비스도 지원됩니다.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Social Link Buttons -->
-                    <div class="flex items-center gap-4 pt-2">
-                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
-                            <i class="fas fa-link"></i>
-                        </a>
+                    <!-- Store Meta Infos -->
+                    <div class="space-y-3.5 pt-4 border-t border-white/10 text-[11px] sm:text-xs text-gray-400">
+                        <div class="flex items-start gap-4">
+                            <span class="font-bold text-white uppercase w-16 tracking-widest text-[10px]">ADDRESS</span>
+                            <span class="font-light">서울시 성동구 성수이로 11길 5 (CHIC 빌딩 1F)</span>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="font-bold text-white uppercase w-16 tracking-widest text-[10px]">OPEN</span>
+                            <span class="font-light">Daily 11:30 - 21:30 (Last Order 21:00)</span>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="font-bold text-white uppercase w-16 tracking-widest text-[10px]">CONTACT</span>
+                            <span class="font-light">02. 1234. 5678 | hello@chicatelier.com</span>
+                        </div>
                     </div>
                 </div>
 
@@ -408,64 +605,117 @@
         </div>
     </section>
 
-    <!-- Custom Modal/Alert Box instead of browser alert() -->
-    <div id="custom-alert" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-charcoal border border-white/10 p-8 max-w-sm w-full mx-6 text-center space-y-6">
-            <h3 class="text-lg font-bold text-white tracking-wider">지도 앱 외부 연동</h3>
-            <p class="text-sm text-gray-400 leading-relaxed font-light">
-                실제 지도 정보 및 외부 이동이 차단된 안전한 시뮬레이션 환경입니다.<br>
-                성수동 아틀리에로 오시는 길을 확인해 주셔서 감사합니다.
+    <!-- Detail view Modal -->
+    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-charcoal border border-white/10 p-6 sm:p-8 max-w-lg w-full mx-4 text-left space-y-6 relative rounded-sm">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white" aria-label="닫기">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <div class="space-y-2">
+                <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-gold">DESSERT ARCHIVE</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white" id="modal-title">Dessert Title</h3>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gray-400 font-light leading-relaxed" id="modal-desc">
+                디저트에 대한 고급 설명 플레이스홀더입니다.
             </p>
-            <button onclick="hideCustomAlert()" class="w-full py-3 bg-white text-charcoal-dark text-xs font-bold uppercase tracking-widest hover:bg-silver transition-colors">
+
+            <div class="grid grid-cols-2 gap-4 text-xs pt-4 border-t border-white/5">
+                <div class="space-y-1">
+                    <span class="text-[9px] font-bold text-gray-500 uppercase tracking-widest block">Main Ingredients</span>
+                    <p class="text-gray-300 font-light" id="modal-ingredients">재료 목록</p>
+                </div>
+                <div class="space-y-1">
+                    <span class="text-[9px] font-bold text-gray-500 uppercase tracking-widest block">Recommended Coffee Pairing</span>
+                    <p class="text-gold font-light" id="modal-pairing">에스프레소 싱글 오리진</p>
+                </div>
+            </div>
+
+            <div class="pt-2 flex gap-3">
+                <button onclick="closeDetailModal()" class="flex-1 py-3 bg-white hover:bg-gold text-charcoal-deep text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-colors duration-300 rounded-sm">
+                    확인했습니다
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal/Alert Box instead of browser alert() -->
+    <div id="custom-alert" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-charcoal border border-white/10 p-6 sm:p-8 max-w-sm w-full mx-6 text-center space-y-6 rounded-sm">
+            <h3 class="text-base sm:text-lg font-bold text-gold tracking-widest uppercase">지도 연결 안내</h3>
+            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
+                실제 지도 정보 및 네이버 지도 링크 연결이 차단된 포트폴리오 안전 시뮬레이션 환경입니다.<br class="hidden sm:block">
+                성수동 아틀리에로 오시는 길을 확인해 주셔서 진심으로 감사드립니다.
+            </p>
+            <button onclick="hideCustomAlert()" class="w-full py-3 bg-white hover:bg-gold text-charcoal-deep text-xs font-bold uppercase tracking-widest transition-colors duration-300 rounded-sm">
                 확인했습니다
             </button>
         </div>
     </div>
 
+    <!-- Live Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
     <!-- Footer -->
-    <footer class="bg-charcoal-dark border-t border-white/5 py-12 text-center text-xs text-gray-600">
-        <div class="max-w-7xl mx-auto px-6 space-y-6">
-            <p class="font-extrabold text-sm tracking-widest text-white">CHIC ATELIER</p>
-            <p class="font-light tracking-wide max-w-md mx-auto">
+    <footer class="bg-charcoal-deep border-t border-white/5 py-16 text-center text-xs text-gray-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-6">
+            <p class="font-extrabold text-sm sm:text-base tracking-[0.3em] text-white">CHIC ATELIER</p>
+            <p class="font-light tracking-wide max-w-md mx-auto text-gray-500 leading-relaxed px-2 text-[11px] sm:text-xs">
                 "디저트, 일상의 가장 완벽한 한 조각"<br>
                 © 2026 CHIC Atelier de Dessert. All Rights Reserved.
             </p>
-            <div class="flex justify-center gap-6 text-gray-500 font-medium">
-                <a href="#" class="hover:text-white transition-colors">이용약관</a>
+            <div class="flex justify-center gap-4 sm:gap-6 text-[10px] sm:text-xs text-gray-500 font-medium">
+                <a href="#" class="hover:text-white transition-colors duration-300">이용약관</a>
                 <span>|</span>
-                <a href="#" class="hover:text-white transition-colors">개인정보처리방침</a>
+                <a href="#" class="hover:text-white transition-colors duration-300">개인정보처리방침</a>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript For Interactivity -->
     <script>
-        // 1. Mobile Menu Toggle
+        // 1. Sleek Mobile Menu Drawer controls (Fullscreen layout)
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const body = document.body;
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        const openMobileMenu = () => {
+            mobileMenuDrawer.classList.remove('translate-x-full');
+            body.classList.add('overflow-hidden');
+        };
 
-        // Close mobile menu when nav link clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
+        const closeMobileMenu = () => {
+            mobileMenuDrawer.classList.add('translate-x-full');
+            body.classList.remove('overflow-hidden');
+        };
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
+
+        // Close mobile drawer when link clicked
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                closeMobileMenu();
             });
         });
 
-        // 2. Change Header Style on Scroll
+        // 2. Change Header Style on Scroll with fine throttle
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('bg-charcoal-dark/95', 'shadow-lg');
+            if (window.scrollY > 30) {
+                header.classList.add('bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
+                header.classList.remove('bg-charcoal-deep/80');
             } else {
-                header.classList.remove('bg-charcoal-dark/95', 'shadow-lg');
+                header.classList.remove('bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
+                header.classList.add('bg-charcoal-deep/80');
             }
         });
 
-        // 3. Custom Alert/Modal triggers (Instead of default alert)
+        // 3. Custom Alert & Modal Triggers
         function showCustomAlert() {
             const alertBox = document.getElementById('custom-alert');
             alertBox.classList.remove('opacity-0', 'pointer-events-none');
@@ -476,24 +726,213 @@
             alertBox.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        // 4. Scroll Reveal Fade-In Animation
+        function openDetailModal(title, desc, ingredients, pairing) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-desc').textContent = desc;
+            document.getElementById('modal-ingredients').textContent = ingredients;
+            document.getElementById('modal-pairing').textContent = pairing;
+
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // 4. Scroll Reveal Fade-In Animation Optimized for mobile
         const fadeElements = document.querySelectorAll('.fade-in-element');
-        
         const checkVisibility = () => {
-            const triggerBottom = window.innerHeight * 0.9;
+            const triggerBottom = window.innerHeight * 0.95;
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 if (elementTop < triggerBottom) {
                     element.classList.add('visible');
-                } else {
-                    element.classList.remove('visible'); // Optional: removes class when scrolled away
                 }
             });
         };
 
         window.addEventListener('scroll', checkVisibility);
-        // Initial check on load
         window.addEventListener('load', checkVisibility);
+
+        // 5. Interactive Menu filtering animation
+        function filterMenu(category) {
+            // Update Tab UI
+            document.querySelectorAll('.menu-tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-gold', 'text-gold');
+                btn.classList.add('border-white/10', 'text-gray-400');
+            });
+
+            const currentTab = document.getElementById(`tab-${category}`);
+            if (currentTab) {
+                currentTab.classList.add('active', 'border-gold', 'text-gold');
+                currentTab.classList.remove('border-white/10', 'text-gray-400');
+            }
+
+            // Cards transition out and filter
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(15px)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || item.classList.contains(category)) {
+                        item.style.display = 'flex';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }, 300);
+            });
+        }
+
+        // 6. Real-time Live Cake Lab Visualizer Configuration
+        const cakeState = {
+            shape: 'cube',
+            cream: 'blanc',
+            garnish: 'gold'
+        };
+
+        const prices = {
+            shape: { cube: 45000, cylinder: 42000 },
+            cream: { blanc: 0, matcha: 3000 },
+            garnish: { gold: 3000, berry: 5000 }
+        };
+
+        function updateCakeOption(key, value) {
+            cakeState[key] = value;
+            
+            // UI Button Active classes sync
+            document.querySelectorAll(`[id^="opt-${key}-"]`).forEach(btn => {
+                btn.classList.remove('active', 'border-gold', 'text-gold');
+                btn.classList.add('border-white/5', 'text-gray-400');
+            });
+
+            const selectedBtn = document.getElementById(`opt-${key}-${value}`);
+            if (selectedBtn) {
+                selectedBtn.classList.add('active', 'border-gold', 'text-gold');
+                selectedBtn.classList.remove('border-white/5', 'text-gray-400');
+            }
+
+            // Redraw Visualizer SVG
+            redrawCakeVisualizer();
+            
+            // Recalculate price
+            const total = prices.shape[cakeState.shape] + prices.cream[cakeState.cream] + prices.garnish[cakeState.garnish];
+            document.getElementById('cake-price').textContent = `${total.toLocaleString()} KRW`;
+        }
+
+        function redrawCakeVisualizer() {
+            const renderGroup = document.getElementById('cake-body-render');
+            const garnishGroup = document.getElementById('cake-garnish-render');
+            
+            let topColor = '#FFFFFF';
+            let leftColor = '#E2E8F0';
+            let rightColor = '#CBD5E1';
+            let strokeColor = '#CCCCCC';
+
+            if (cakeState.cream === 'matcha') {
+                topColor = '#4D7C0F';
+                leftColor = '#3F6212';
+                rightColor = '#365314';
+                strokeColor = '#1A3007';
+            }
+
+            let cakeTitle = "CUBE BLANC ATELIER";
+            let cakeDesc = "Symmetrical Architectural Cube (Gold Crack Edition)";
+
+            // Build dynamic SVGs on demand
+            if (cakeState.shape === 'cube') {
+                renderGroup.innerHTML = `
+                    <polygon points="100,70 145,90 100,110 55,90" fill="${topColor}" stroke="${strokeColor}" stroke-width="1"/>
+                    <polygon points="55,90 100,110 100,150 55,130" fill="${leftColor}" stroke="${strokeColor}" stroke-width="1"/>
+                    <polygon points="100,110 145,90 145,130 100,150" fill="${rightColor}" stroke="${strokeColor}" stroke-width="1"/>
+                `;
+                cakeTitle = cakeState.cream === 'blanc' ? "CUBE BLANC" : "CUBE MATCHA";
+            } else { // cylinder
+                renderGroup.innerHTML = `
+                    <ellipse cx="100" cy="90" rx="45" ry="18" fill="${topColor}" stroke="${strokeColor}" stroke-width="1"/>
+                    <path d="M 55,90 A 45,18 0 0,0 145,90 L 145,135 A 45,18 0 0,1 55,135 Z" fill="${rightColor}" stroke="${strokeColor}" stroke-width="1"/>
+                    <path d="M 55,90 A 45,18 0 0,0 100,108 L 100,153 A 45,18 0 0,1 55,135 Z" fill="${leftColor}" stroke="${strokeColor}" stroke-width="0.3"/>
+                `;
+                cakeTitle = cakeState.cream === 'blanc' ? "CYLINDER BLANC" : "CYLINDER MATCHA";
+            }
+
+            // Garnish render logic
+            if (cakeState.garnish === 'gold') {
+                garnishGroup.innerHTML = `
+                    <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="100" cy="85" r="3" fill="#D4AF37" />
+                    <circle cx="120" cy="115" r="2" fill="#D4AF37" />
+                `;
+                cakeDesc = "Architectural Structure (Minimalist Gold Foil Edition)";
+            } else { // berry
+                garnishGroup.innerHTML = `
+                    <circle cx="100" cy="85" r="5" fill="#DC2626" />
+                    <circle cx="112" cy="90" r="4" fill="#991B1B" />
+                    <circle cx="92" cy="88" r="4" fill="#F43F5E" />
+                    <path d="M100,80 Q105,70 115,74" stroke="#DC2626" stroke-width="1" fill="none" />
+                `;
+                cakeDesc = "Surrealist Fruit Accent (Ruby Red Berry Edition)";
+            }
+
+            document.getElementById('cake-visual-title').textContent = cakeTitle;
+            document.getElementById('cake-visual-desc').textContent = cakeDesc;
+        }
+
+        // 7. Route Tab switching function
+        function switchRouteTab(type) {
+            document.querySelectorAll('.route-tab').forEach(tab => {
+                tab.classList.remove('text-gold');
+                tab.classList.add('text-gray-400');
+            });
+            document.getElementById(`route-tab-${type}`).classList.add('text-gold');
+            document.getElementById(`route-tab-${type}`).classList.remove('text-gray-400');
+
+            // Bottom Border indicator logic
+            document.getElementById('route-indicator-subway').style.width = type === 'subway' ? '100%' : '0';
+            document.getElementById('route-indicator-car').style.width = type === 'car' ? '100%' : '0';
+
+            // Show Content
+            if (type === 'subway') {
+                document.getElementById('route-subway-content').classList.remove('hidden');
+                document.getElementById('route-car-content').classList.add('hidden');
+            } else {
+                document.getElementById('route-subway-content').classList.add('hidden');
+                document.getElementById('route-car-content').classList.remove('hidden');
+            }
+        }
+
+        // Live Reservation Toast logic
+        function reserveCustomCake() {
+            showToast("✦ 케이크 실시간 견적이 저장되었습니다. 예약 상담원이 곧 유선으로 연결해 드립니다.");
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = "bg-charcoal border border-gold/40 text-softwhite text-xs px-5 py-4 shadow-2xl transition-all duration-500 transform translate-y-4 opacity-0 flex items-center gap-3 rounded-sm pointer-events-auto max-w-sm";
+            toast.innerHTML = `
+                <div class="w-2 h-2 rounded-full bg-gold animate-ping"></div>
+                <div class="flex-1 font-light leading-relaxed">${message}</div>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 4000);
+        }
     </script>
 </body>
 </html>
